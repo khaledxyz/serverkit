@@ -612,21 +612,21 @@ export const TIMEZONES: readonly TimezoneId[] = [
   "Universal",
   "W-SU",
   "WET",
-  "Zulu"
+  "Zulu",
 ] as const;
 
 /**
  * Utility function to parse timezone ID into region and city
  */
 export function parseTimezoneId(timezoneId: TimezoneId): TimezoneInfo {
-  const parts = timezoneId.split('/');
-  const region = parts[0] || '';
-  const city = parts.slice(1).join('/').replace(/_/g, ' ') || timezoneId;
-  
+  const parts = timezoneId.split("/");
+  const region = parts[0] || "";
+  const city = parts.slice(1).join("/").replace(/_/g, " ") || timezoneId;
+
   return {
     id: timezoneId,
     region,
-    city
+    city,
   };
 }
 
@@ -634,14 +634,17 @@ export function parseTimezoneId(timezoneId: TimezoneId): TimezoneInfo {
  * Get all timezones grouped by region
  */
 export function getTimezonesByRegion(): Record<string, TimezoneInfo[]> {
-  return TIMEZONES.reduce((acc, timezone) => {
-    const info = parseTimezoneId(timezone);
-    if (!acc[info.region]) {
-      acc[info.region] = [];
-    }
-    acc[info.region].push(info);
-    return acc;
-  }, {} as Record<string, TimezoneInfo[]>);
+  return TIMEZONES.reduce(
+    (acc, timezone) => {
+      const info = parseTimezoneId(timezone);
+      if (!acc[info.region]) {
+        acc[info.region] = [];
+      }
+      acc[info.region].push(info);
+      return acc;
+    },
+    {} as Record<string, TimezoneInfo[]>,
+  );
 }
 
 /**
@@ -649,12 +652,11 @@ export function getTimezonesByRegion(): Record<string, TimezoneInfo[]> {
  */
 export function searchTimezones(query: string): TimezoneInfo[] {
   const lowerQuery = query.toLowerCase();
-  return TIMEZONES
-    .map(parseTimezoneId)
-    .filter(info => 
+  return TIMEZONES.map(parseTimezoneId).filter(
+    (info) =>
       info.city.toLowerCase().includes(lowerQuery) ||
-      info.region.toLowerCase().includes(lowerQuery)
-    );
+      info.region.toLowerCase().includes(lowerQuery),
+  );
 }
 
 /**

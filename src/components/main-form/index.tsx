@@ -11,6 +11,7 @@ import {
   type FormSchemaType,
 } from "./constants";
 import { DistroSelector } from "./distro-selector";
+import { FailToBan } from "./fail-to-ban";
 import { General } from "./general";
 
 export function MainForm() {
@@ -49,6 +50,7 @@ export function MainForm() {
       <form className="space-y-4 p-3">
         <DistroSelector />
         <General />
+        <FailToBan />
       </form>
     </Form>
   );

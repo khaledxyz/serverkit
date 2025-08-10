@@ -29,8 +29,8 @@ export const usePanelStore = create<PanelStore>()(
     }),
     {
       name: "panel-state",
-    }
-  )
+    },
+  ),
 );
 
 // use these for better performance
