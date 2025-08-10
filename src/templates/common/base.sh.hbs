@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# =============================================================================
+# Base System Setup Script
+# Generated for: {{distro}}
+# =============================================================================
+
+set -euo pipefail
+
+echo "🚀 Starting system setup for {{distro}}..."
+
+{{#if hostname}}
+# Configure hostname
+echo "🏷️ Setting hostname to: {{hostname}}"
+sudo hostnamectl set-hostname "{{hostname}}"
+echo "127.0.0.1 {{hostname}}" | sudo tee -a /etc/hosts
+{{/if}}
+
+{{#if timezone}}
+# Configure timezone
+echo "🌍 Setting timezone to: {{timezone}}"
+sudo timedatectl set-timezone "{{timezone}}"
+{{/if}}
+
+echo "✅ Base system setup completed!"
