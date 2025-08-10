@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "docker:dev": "docker-compose --profile dev up",
+    "docker:prod": "docker-compose --profile prod up",
     "lint": "eslint .",
     "preview": "vite preview"
   },
