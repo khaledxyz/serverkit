@@ -9,9 +9,7 @@ interface UsePasteUploadResult {
 
 export function usePasteUpload(): UsePasteUploadResult {
   const [isUploading, setIsUploading] = useState(false);
-  const [uploadedUrl, setUploadedUrl] = useState<string | null>(
-    "https://dpaste.com/CRXJKB7D4", // TODO: REMOVE LATER
-  );
+  const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
 
   const uploadScript = useCallback(async (scriptContent: string) => {
     try {
