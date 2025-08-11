@@ -1,0 +1,43 @@
+{{!--
+  UFW Setup Script
+  Variables:
+    - enableUFW (boolean)
+    - defaultIncoming (boolean) - true = allow, false = deny
+    - defaultOutgoing (boolean) - true = allow, false = deny
+    - allowHTTP (boolean)
+    - allowHTTPS (boolean)
+    - ufwCustomPorts (array of { port: number, protocol: "tcp" | "udp" })
+--}}
+
+{{#if enableUFW}}
+echo "🛡️ Setting up UFW firewall..."
+
+sudo apt-get update
+sudo apt-get install -y ufw
+
+# Set default policies
+sudo ufw default {{#if defaultIncoming}}allow{{else}}deny{{/if}} incoming
+sudo ufw default {{#if defaultOutgoing}}allow{{else}}deny{{/if}} outgoing
+
+# Allow essential ports
+{{#if allowHTTP}}sudo ufw allow 80/tcp{{/if}}
+{{#if allowHTTPS}}sudo ufw allow 443/tcp{{/if}}
+
+# Allow custom ports
+{{#each ufwCustomPorts}}
+sudo ufw allow {{port}}/{{protocol}}
+{{/each}}
+
+# Always allow SSH
+sudo ufw allow ssh
+
+# Enable UFW
+echo "Enabling UFW..."
+sudo ufw --force enable
+
+echo "✅ UFW setup completed!"
+sudo ufw status verbose
+
+{{else}}
+echo "⚠️ UFW setup skipped."
+{{/if}}

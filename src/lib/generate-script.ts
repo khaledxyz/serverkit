@@ -28,6 +28,7 @@ const COMPONENT_ORDER = [
   //   { field: "configureSSH", template: "ssh", priority: 7 },
   //   { field: "installUFW", template: "ufw", priority: 10 },
   { field: "installFail2ban", template: "fail2ban", priority: 15 },
+  { field: "enableUFW", template: "ufw", priority: 20 },
   //   { field: "installDocker", template: "docker", priority: 20 },
   // Future components should be added here with appropriate priorities
   // { field: 'installNginx', template: 'nginx', priority: 30 },
@@ -68,7 +69,7 @@ export function generateSetupScript(data: FormSchemaType): string {
       console.warn(
         `No template found for component: ${template} (field: ${
           field || "base"
-        })`,
+        })`
       );
     }
   }

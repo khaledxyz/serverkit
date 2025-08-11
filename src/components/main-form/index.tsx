@@ -13,6 +13,7 @@ import {
 import { DistroSelector } from "./distro-selector";
 import { FailToBan } from "./fail-to-ban";
 import { General } from "./general";
+import { UFW } from "./ufw";
 
 export function MainForm() {
   const { setScript } = useScriptStore();
@@ -51,6 +52,7 @@ export function MainForm() {
         <DistroSelector />
         <General />
         <FailToBan />
+        <UFW />
       </form>
     </Form>
   );
