@@ -1,8 +1,10 @@
+{{#if distro}}
 #!/bin/bash 
 
 # ============================================================================= 
-# Base System Setup Script # Generated for: {{distro}}
+# System Setup Script Generated for: {{distro}}
 # =============================================================================
+
 
 set -euo pipefail
 
@@ -16,4 +18,8 @@ sudo hostnamectl set-hostname {{hostname}}
 {{/if}}
 {{#if timezone}}
 sudo timedatectl set-timezone {{timezone}}
+{{/if}}
+
+{{else}}
+# Please select a distro to continue
 {{/if}}
