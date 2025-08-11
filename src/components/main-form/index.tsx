@@ -1,4 +1,5 @@
 import { generateSetupScript } from "@/lib/generate-script";
+import { useDebouncedFormWatcher } from "@/lib/use-debounced-form-watcher";
 import { useErrorStore } from "@/stores/errors-store";
 import { useScriptStore } from "@/stores/script-store";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,9 +26,9 @@ export function MainForm() {
     mode: "onChange",
   });
 
-  form.watch((values) => {
+  useDebouncedFormWatcher(form, 300, (values) => {
     try {
-      const generated = generateSetupScript(values as FormSchemaType);
+      const generated = generateSetupScript(values);
       setScript(generated);
     } catch (err) {
       console.log(err);
