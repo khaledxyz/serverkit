@@ -52,8 +52,8 @@ export const defaultFormValues: FormSchemaType = {
 
   // FAIL2BAN
   installFail2ban: false,
-  fail2banSSHBanTime: "",
-  fail2banSSHMaxRetry: "",
+  fail2banSSHBanTime: 3600,
+  fail2banSSHMaxRetry: 5,
   // FAIL2BAN END
 
   // UFW

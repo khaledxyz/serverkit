@@ -6,24 +6,23 @@
     - fail2banSSHMaxRetry (number, fallback 5)
 --}}
 
-{{#if installFail2ban}}
 echo "🛡️ Installing and configuring Fail2Ban..."
 
 sudo apt-get update
-sudo apt-get install -y fail2ban
+sudo apt-get install --yes fail2ban
 
-sudo mkdir -p /etc/fail2ban
+sudo mkdir --parents /etc/fail2ban
 
 sudo tee /etc/fail2ban/jail.local > /dev/null <<EOF
 [DEFAULT]
-bantime = {{fail2banSSHBanTime ?? 3600}}
+bantime = {{fail2banSSHBanTime}}
 
 [sshd]
 enabled = true
 port = ssh
 logpath = %(sshd_log)s
 backend = %(sshd_backend)s
-maxretry = {{fail2banSSHMaxRetry ?? 5}}
+maxretry = {{fail2banSSHMaxRetry}}
 EOF
 
 echo "🔄 Enabling and starting Fail2Ban service..."
@@ -36,7 +35,3 @@ sudo fail2ban-client status
 
 echo "🔍 SSH jail status:"
 sudo fail2ban-client status sshd
-
-{{else}}
-echo "⚠️ Fail2Ban installation not enabled."
-{{/if}}
