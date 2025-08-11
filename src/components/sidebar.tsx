@@ -8,6 +8,7 @@ import {
   PanelLeftIcon,
   PanelRightIcon,
 } from "lucide-react";
+import { Logo } from "./logo";
 import { ThemeSwitcher } from "./theme-switcher";
 import { Button, buttonVariants } from "./ui/button";
 
@@ -22,41 +23,46 @@ export const Sidebar = () => {
   } = usePanelStore();
 
   return (
-    <aside className="border-r h-full flex flex-col items-center gap-1 p-2">
-      <Button
-        size="icon"
-        variant={showLeft ? "secondary" : "ghost"}
-        onClick={toggleLeft}
-        title="Toggle Form"
-      >
-        <PanelLeftIcon />
-      </Button>
+    <aside className="border-r h-full flex flex-col items-center p-2">
+      <div className="flex flex-col items-center gap-1">
+        <div className="size-9 grid place-items-center">
+          <Logo />
+        </div>
+        <Button
+          size="icon"
+          variant={showLeft ? "secondary" : "ghost"}
+          onClick={toggleLeft}
+          title="Toggle Form"
+        >
+          <PanelLeftIcon />
+        </Button>
 
-      <Button
-        size="icon"
-        variant={showRight ? "secondary" : "ghost"}
-        onClick={toggleRight}
-        title="Toggle Script"
-      >
-        <PanelRightIcon />
-      </Button>
+        <Button
+          size="icon"
+          variant={showRight ? "secondary" : "ghost"}
+          onClick={toggleRight}
+          title="Toggle Script"
+        >
+          <PanelRightIcon />
+        </Button>
 
-      <Button
-        size="icon"
-        variant={showBottom ? "secondary" : "ghost"}
-        onClick={toggleBottom}
-        title="Toggle Console"
-      >
-        <PanelBottomIcon />
-      </Button>
+        <Button
+          size="icon"
+          variant={showBottom ? "secondary" : "ghost"}
+          onClick={toggleBottom}
+          title="Toggle Console"
+        >
+          <PanelBottomIcon />
+        </Button>
+      </div>
 
-      <div className="mt-auto flex flex-col">
+      <div className="mt-auto flex flex-col items-center gap-1">
         <ThemeSwitcher />
         <a
           href="https://github.com/khaledxyz/serverkit/issues/new"
           target="_blank"
           rel="noopener noreferrer"
-          className={buttonVariants({ variant: "ghost" })}
+          className={buttonVariants({ variant: "ghost", size: "icon" })}
           title="Report an issue"
         >
           <BugIcon />
@@ -66,7 +72,7 @@ export const Sidebar = () => {
           href="https://buymeacoffee.com/khaledxyz"
           target="_blank"
           rel="noopener noreferrer"
-          className={buttonVariants({ variant: "ghost" })}
+          className={buttonVariants({ variant: "ghost", size: "icon" })}
           title="Buy me a coffee"
         >
           <CoffeeIcon />
@@ -76,7 +82,7 @@ export const Sidebar = () => {
           href="https://github.com/khaledxyz/serverkit"
           target="_blank"
           rel="noopener noreferrer"
-          className={buttonVariants({ variant: "ghost" })}
+          className={buttonVariants({ variant: "ghost", size: "icon" })}
           title="Github"
         >
           <GithubIcon />
