@@ -1,4 +1,5 @@
-# React + TypeScript + Vite
+# ServerKit
+![serverkit banner](public/og.jpg?raw=true "serverkit banner")
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
