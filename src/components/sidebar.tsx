@@ -27,7 +27,7 @@ export const Sidebar = () => {
         size="icon"
         variant={showLeft ? "secondary" : "ghost"}
         onClick={toggleLeft}
-        title="Left Panel"
+        title="Toggle Form"
       >
         <PanelLeftIcon />
       </Button>
@@ -36,7 +36,7 @@ export const Sidebar = () => {
         size="icon"
         variant={showRight ? "secondary" : "ghost"}
         onClick={toggleRight}
-        title="Right Panel"
+        title="Toggle Script"
       >
         <PanelRightIcon />
       </Button>
@@ -45,7 +45,7 @@ export const Sidebar = () => {
         size="icon"
         variant={showBottom ? "secondary" : "ghost"}
         onClick={toggleBottom}
-        title="Bottom Panel"
+        title="Toggle Console"
       >
         <PanelBottomIcon />
       </Button>

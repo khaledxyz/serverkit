@@ -35,7 +35,6 @@ export function FailToBan() {
       name="installFail2ban"
       render={({ field }) => (
         <FormItem className="flex-1">
-          <FormLabel>Fail2Ban</FormLabel>
           <FormControl>
             <ToggleCard
               checked={field.value || false}
