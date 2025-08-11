@@ -41,11 +41,8 @@ export function RightPanel() {
   return (
     <ResizablePanel>
       <div className="h-full bg-background flex flex-col">
-        <div className="flex items-center justify-between p-4 pb-2 border-b">
-          <div className="flex items-center gap-2">
-            <div className="size-2 bg-green-500 rounded-full animate-pulse"></div>
-            <h2 className="text-lg font-semibold">Right Panel</h2>
-          </div>
+        <div className="flex items-center justify-between px-4 py-2 border-b">
+          <h2 className="font-semibold">script.sh</h2>
 
           <div className="flex items-center gap-2">
             <CurlDialog />
