@@ -12,14 +12,18 @@
     "lint:fix": "ultracite fix"
   },
   "dependencies": {
+    "@base-ui-components/react": "1.0.0-beta.4",
     "@tailwindcss/vite": "^4.1.17",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.553.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hotkeys-hook": "^5.2.1",
+    "react-resizable-panels": "^3.0.6",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.17",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.4",
