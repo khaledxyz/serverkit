@@ -6,20 +6,32 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "lint:check": "ultracite check",
+    "lint:fix": "ultracite fix"
   },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.4",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
     "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
     "typescript": "~5.9.3",
+    "ultracite": "6.3.2",
     "vite": "^7.1.7"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+      "pnpm dlx ultracite fix"
+    ]
   }
 }
