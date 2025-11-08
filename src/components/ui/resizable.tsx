@@ -1,5 +1,6 @@
 import type * as React from "react";
 
+// biome-ignore lint/performance/noNamespaceImport: <not needed>
 import * as ResizablePrimitive from "react-resizable-panels";
 
 import { GripVerticalIcon } from "lucide-react";
@@ -53,4 +54,4 @@ function ResizableHandle({
   );
 }
 
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle };
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup };
