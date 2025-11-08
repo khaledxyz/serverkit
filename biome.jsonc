@@ -27,6 +27,7 @@
     "enabled": true,
     "rules": {
       "nursery": {
+        "noShadow": "off",
         "useSortedClasses": {
           "level": "info",
           "options": {
