@@ -1,10 +1,15 @@
 import { ResizablePanel } from "@/components/ui/resizable";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export function LeftPanel() {
   return (
-    <ResizablePanel>
-      <div className="h-full w-full">
-        <p>Hey</p>
+    <ResizablePanel defaultSize={25}>
+      <div className="flex h-full flex-col">
+        <div className="border-b p-3 font-mono">Form</div>
+
+        <ScrollArea className="flex-1 p-3" orientation="vertical">
+          form
+        </ScrollArea>
       </div>
     </ResizablePanel>
   );
