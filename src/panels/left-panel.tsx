@@ -1,3 +1,4 @@
+import { MainForm } from "@/components/main-form.tsx";
 import { ResizablePanel } from "@/components/ui/resizable";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -8,7 +9,7 @@ export function LeftPanel() {
         <div className="border-b p-3 font-mono">Form</div>
 
         <ScrollArea className="flex-1 p-3" orientation="vertical">
-          form
+          <MainForm />
         </ScrollArea>
       </div>
     </ResizablePanel>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource/dm-sans";
+@import "@fontsource/dm-mono";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -104,6 +106,10 @@
       "Segoe UI Symbol";
 
     @apply bg-background text-foreground antialiased h-screen w-screen;
+  }
+
+  .mono {
+    font-family: "DM Mono", monospace;
   }
 }
 
