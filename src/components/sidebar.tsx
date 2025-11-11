@@ -4,7 +4,6 @@ import {
   BugIcon,
   CoffeeIcon,
   GithubIcon,
-  HatGlassesIcon,
   PanelBottomIcon,
   PanelLeftIcon,
   PanelRightIcon,
@@ -16,6 +15,8 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import { usePanelStore } from "@/stores/panels-store";
+
+import PrivacyDialog from "./privacy-dialog";
 
 export const Sidebar = () => {
   const {
@@ -172,16 +173,7 @@ export const Sidebar = () => {
           <TooltipPopup side="right">Github</TooltipPopup>
         </Tooltip>
 
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <Button size="icon" variant="ghost">
-                <HatGlassesIcon />
-              </Button>
-            }
-          />
-          <TooltipPopup side="right">Privacy</TooltipPopup>
-        </Tooltip>
+        <PrivacyDialog />
       </div>
     </aside>
   );
