@@ -105,7 +105,7 @@
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
 
-    @apply bg-background text-foreground antialiased h-dvh w-dvw;
+    @apply bg-background text-foreground antialiased h-svh w-svw;
   }
 
   .mono {
