@@ -1,5 +1,6 @@
 import { DistroSelector } from "./distro-selector";
 import { HostnameInput } from "./hostname-input";
+import { SshSettings } from "./ssh-settings";
 import { SystemUpdatesItem } from "./system-updates-toggle";
 import { TimezoneInput } from "./timezone-input";
 import { UsersSettings } from "./users-settings";
@@ -12,6 +13,7 @@ export function MainForm() {
       <TimezoneInput />
       <SystemUpdatesItem />
       <UsersSettings />
+      <SshSettings />
     </form>
   );
 }
