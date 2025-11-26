@@ -1,4 +1,13 @@
-import { BoltIcon, Trash2Icon } from "lucide-react";
+import { useState } from "react";
+
+import {
+  BoltIcon,
+  EyeIcon,
+  EyeOffIcon,
+  ShuffleIcon,
+  Trash2Icon,
+} from "lucide-react";
+import { nanoid } from "nanoid";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,12 +23,25 @@ import {
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
@@ -40,6 +62,13 @@ export function UsersSettings() {
 }
 
 function SettingDialog() {
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const generatePassword = () => {
+    setPassword(nanoid(16));
+  };
+
   return (
     <Dialog>
       <DialogTrigger render={<Button size="icon" variant="outline" />}>
@@ -59,7 +88,66 @@ function SettingDialog() {
             </Field>
             <Field>
               <FieldLabel>Password</FieldLabel>
-              <Input type="password" />
+              <InputGroup>
+                <InputGroupInput
+                  onChange={(e) => setPassword(e.target.value)}
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                />
+                <InputGroupAddon align="inline-end">
+                  <Button
+                    className="text-muted-foreground"
+                    onClick={() => setShowPassword(!showPassword)}
+                    size="icon-xs"
+                    type="button"
+                    variant="ghost"
+                  >
+                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                  </Button>
+                </InputGroupAddon>
+                <InputGroupAddon align="inline-end">
+                  <Button
+                    className="text-muted-foreground"
+                    onClick={generatePassword}
+                    size="icon-xs"
+                    type="button"
+                    variant="ghost"
+                  >
+                    <ShuffleIcon />
+                  </Button>
+                </InputGroupAddon>
+              </InputGroup>
+            </Field>
+            <Field>
+              <FieldLabel>
+                <Checkbox />
+                Force password change on first login
+              </FieldLabel>
+            </Field>
+            <Field>
+              <FieldLabel>SSH Public Key</FieldLabel>
+              <Textarea
+                placeholder="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC..."
+                rows={3}
+              />
+              <FieldDescription>
+                Optional. User will be able to login via SSH key authentication
+              </FieldDescription>
+            </Field>
+            <Field>
+              <FieldLabel>Default Shell</FieldLabel>
+              <Select defaultValue="bash">
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="bash">Bash</SelectItem>
+                  <SelectItem value="zsh">Zsh</SelectItem>
+                  <SelectItem value="fish">Fish</SelectItem>
+                  <SelectItem value="sh">Sh</SelectItem>
+                  <SelectItem value="nologin">/sbin/nologin</SelectItem>
+                </SelectContent>
+              </Select>
             </Field>
             <Field>
               <FieldLabel>Additional Groups</FieldLabel>
