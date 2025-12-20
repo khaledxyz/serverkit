@@ -1,4 +1,4 @@
-import { MainForm } from "@/components/main-form.tsx";
+import { MainForm } from "@/components/main-form";
 import { ResizablePanel } from "@/components/ui/resizable";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
