@@ -1,6 +1,7 @@
 import { Analytics } from "@/components/analytics";
 import { Providers } from "@/providers";
 
+import { DevelopmentDialog } from "./components/development-dialog";
 import { MainPanels } from "./panels";
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
     <Providers>
       <Analytics />
       <MainPanels />
+      <DevelopmentDialog />
     </Providers>
   );
 }
