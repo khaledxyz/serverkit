@@ -29,6 +29,7 @@ export function MainForm() {
   });
 
   // Debounced function to update the script
+  // biome-ignore lint/suspicious/noExplicitAny: <only temporarily>
   const debouncedSetScript = useDebounceCallback((formData: any) => {
     const script = generateScript(formData);
     setGeneratedScript(script);
