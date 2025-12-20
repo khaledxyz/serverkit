@@ -16,6 +16,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogPanel,
   DialogPopup,
   DialogTitle,
   DialogTrigger,
@@ -80,7 +81,7 @@ function SettingDialog() {
           <DialogDescription>Manage users and their stuff</DialogDescription>
         </DialogHeader>
 
-        <div className="flex gap-4">
+        <DialogPanel className="flex gap-4">
           <form className="flex flex-1 flex-col gap-4">
             <Field>
               <FieldLabel>Username</FieldLabel>
@@ -194,7 +195,7 @@ function SettingDialog() {
               </ItemActions>
             </Item>
           </div>
-        </div>
+        </DialogPanel>
         <DialogFooter>
           <DialogClose render={<Button variant="ghost" />}>Close</DialogClose>
           <DialogClose render={<Button />}>Save</DialogClose>

@@ -9,6 +9,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogPanel,
   DialogPopup,
   DialogTitle,
   DialogTrigger,
@@ -78,7 +79,7 @@ function SshDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <form className="flex flex-col gap-4">
+        <DialogPanel className="flex flex-col gap-4">
           <div className="flex gap-4">
             <NumberField defaultValue={22}>
               <NumberFieldScrubArea label="SSH Port" />
@@ -211,7 +212,7 @@ function SshDialog() {
               login, use SSH keys, and consider changing the default port.
             </AlertDescription>
           </Alert>
-        </form>
+        </DialogPanel>
 
         <DialogFooter>
           <DialogClose render={<Button variant="ghost" />}>Close</DialogClose>
