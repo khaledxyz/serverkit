@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { ResizablePanel } from "@/components/ui/resizable";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
+import { useGeneratorStore } from "@/stores/generator-store";
 
 export function RightPanel() {
+  const generatedScript = useGeneratorStore((state) => state.generatedScript);
+
   return (
     <ResizablePanel>
       <div className="flex h-full flex-col">
@@ -29,7 +32,7 @@ export function RightPanel() {
         </div>
 
         <ScrollArea className="flex-1 p-3" orientation="vertical">
-          <BashHighlighter />
+          <BashHighlighter code={generatedScript} />
         </ScrollArea>
       </div>
     </ResizablePanel>
