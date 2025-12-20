@@ -74,7 +74,7 @@ function SettingDialog() {
       <DialogTrigger render={<Button size="icon" variant="outline" />}>
         <BoltIcon />
       </DialogTrigger>
-      <DialogPopup className="sm:max-w-2xl">
+      <DialogPopup className="sm:max-w-4xl">
         <DialogHeader>
           <DialogTitle>Manage Users</DialogTitle>
           <DialogDescription>Manage users and their stuff</DialogDescription>

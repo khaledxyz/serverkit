@@ -1,6 +1,7 @@
 import { BoltIcon, ShieldIcon } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,7 +13,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   Item,
   ItemActions,
@@ -39,6 +41,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 
 const loginOptions = [
+  { label: "Select", value: null },
   { label: "Permit root login", value: "yes" },
   { label: "Deny root login", value: "no" },
   { label: "Permit without password", value: "without-password" },
@@ -106,7 +109,20 @@ function SshDialog() {
           <Label className="mt-5">Authentication</Label>
           <Item variant="outline">
             <ItemContent>
-              <ItemTitle>PasswordAuthentication</ItemTitle>
+              <ItemTitle className="flex items-center gap-2">
+                Public Key Authentication
+                <Badge variant="info">Recommended</Badge>
+              </ItemTitle>
+              <ItemDescription>Allow login with SSH keys</ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Switch defaultChecked />
+            </ItemActions>
+          </Item>
+
+          <Item variant="outline">
+            <ItemContent>
+              <ItemTitle>Password Authentication</ItemTitle>
               <ItemDescription>
                 Allow login with passwords (disable for SSH key only)
               </ItemDescription>
@@ -118,9 +134,12 @@ function SshDialog() {
 
           <Item variant="outline">
             <ItemContent>
-              <ItemTitle>PermitEmptyPasswords</ItemTitle>
+              <ItemTitle className="flex items-center gap-2">
+                Permit Empty Passwords
+                <Badge variant="error">Not Recommended</Badge>
+              </ItemTitle>
               <ItemDescription>
-                Allow accounts to login without passwords (not recommended)
+                Allow accounts to login without passwords
               </ItemDescription>
             </ItemContent>
             <ItemActions>
@@ -128,7 +147,40 @@ function SshDialog() {
             </ItemActions>
           </Item>
 
+          <NumberField className="mt-3" defaultValue={3}>
+            <NumberFieldScrubArea label="Max Authentication Tries" />
+            <NumberFieldGroup>
+              <NumberFieldDecrement />
+              <NumberFieldInput />
+              <NumberFieldIncrement />
+            </NumberFieldGroup>
+          </NumberField>
+
+          <Field>
+            <FieldLabel>Allow Users/Groups</FieldLabel>
+            <Input placeholder="user1,user2,@group1" type="text" />
+            <FieldDescription>
+              Comma-separated list of users/groups allowed to login. Prefix
+              groups with @
+            </FieldDescription>
+          </Field>
+
           <Label className="mt-5">Network</Label>
+          <Item variant="outline">
+            <ItemContent>
+              <ItemTitle className="flex items-center gap-2">
+                Disable X11 Forwarding
+                <Badge variant="info">Recommended</Badge>
+              </ItemTitle>
+              <ItemDescription>
+                Disable X11 display forwarding for enhanced security
+              </ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Switch />
+            </ItemActions>
+          </Item>
+
           <Item variant="outline">
             <ItemContent>
               <ItemTitle>Disable IPv6</ItemTitle>
