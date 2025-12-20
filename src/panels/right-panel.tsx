@@ -1,4 +1,6 @@
-import { CopyIcon, DownloadIcon } from "lucide-react";
+import { useState } from "react";
+
+import { CheckIcon, CopyIcon, DownloadIcon } from "lucide-react";
 
 import BashHighlighter from "@/components/bash-highlighter";
 import { Button } from "@/components/ui/button";
@@ -9,6 +11,29 @@ import { useGeneratorStore } from "@/stores/generator-store";
 
 export function RightPanel() {
   const generatedScript = useGeneratorStore((state) => state.generatedScript);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(generatedScript);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error("Failed to copy:", error);
+    }
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob([generatedScript], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `server-setup-${Date.now()}.sh`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <ResizablePanel>
@@ -17,16 +42,34 @@ export function RightPanel() {
           <span>Output</span>
           <div className="flex items-center gap-1">
             <Tooltip>
-              <TooltipTrigger render={<Button size="icon" variant="outline" />}>
+              <TooltipTrigger
+                render={
+                  <Button
+                    disabled={!generatedScript}
+                    onClick={handleDownload}
+                    size="icon"
+                    variant="outline"
+                  />
+                }
+              >
                 <DownloadIcon />
               </TooltipTrigger>
               <TooltipPopup>Download</TooltipPopup>
             </Tooltip>
             <Tooltip>
-              <TooltipTrigger render={<Button size="icon" variant="outline" />}>
-                <CopyIcon />
+              <TooltipTrigger
+                render={
+                  <Button
+                    disabled={!generatedScript}
+                    onClick={handleCopy}
+                    size="icon"
+                    variant="outline"
+                  />
+                }
+              >
+                {copied ? <CheckIcon /> : <CopyIcon />}
               </TooltipTrigger>
-              <TooltipPopup>Copy</TooltipPopup>
+              <TooltipPopup>{copied ? "Copied!" : "Copy"}</TooltipPopup>
             </Tooltip>
           </div>
         </div>
