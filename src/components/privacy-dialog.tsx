@@ -16,18 +16,20 @@ import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 export default function PrivacyDialog() {
   return (
     <Dialog>
-      <DialogTrigger>
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <Button size="icon" variant="ghost">
-                <HatGlassesIcon />
-              </Button>
-            }
-          />
-          <TooltipPopup side="right">Privacy</TooltipPopup>
-        </Tooltip>
-      </DialogTrigger>
+      <DialogTrigger
+        render={
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button size="icon" variant="ghost">
+                  <HatGlassesIcon />
+                </Button>
+              }
+            />
+            <TooltipPopup side="right">Privacy</TooltipPopup>
+          </Tooltip>
+        }
+      />
       <DialogPopup>
         <DialogHeader>
           <DialogTitle>Privacy Policy</DialogTitle>
