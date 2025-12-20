@@ -1,3 +1,5 @@
+import { Activity } from "react";
+
 import { Sidebar } from "@/components/sidebar";
 import {
   ResizableHandle,
@@ -31,21 +33,33 @@ export function MainPanels() {
         direction="vertical"
         storage={panelSizeStorage}
       >
-        {hasHorizontalPanels && (
+        <Activity mode={hasHorizontalPanels ? "visible" : "hidden"}>
           <ResizablePanel>
             <ResizablePanelGroup
               autoSaveId="main-horizontal-layout"
               direction="horizontal"
               storage={panelSizeStorage}
             >
-              {showLeft && <LeftPanel />}
-              {hasMultiplePanels && <ResizableHandle />}
-              {showRight && <RightPanel />}
+              <Activity mode={showLeft ? "visible" : "hidden"}>
+                <LeftPanel />
+              </Activity>
+              <Activity mode={hasMultiplePanels ? "visible" : "hidden"}>
+                <ResizableHandle />
+              </Activity>
+              <Activity mode={showRight ? "visible" : "hidden"}>
+                <RightPanel />
+              </Activity>
             </ResizablePanelGroup>
           </ResizablePanel>
-        )}
-        {hasHorizontalPanels && showBottom && <ResizableHandle />}
-        {showBottom && <BottomPanel />}
+        </Activity>
+        <Activity
+          mode={hasHorizontalPanels && showBottom ? "visible" : "hidden"}
+        >
+          <ResizableHandle />
+        </Activity>
+        <Activity mode={showBottom ? "visible" : "hidden"}>
+          <BottomPanel />
+        </Activity>
       </ResizablePanelGroup>
     </main>
   );
