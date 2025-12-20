@@ -20,7 +20,7 @@ export function MainForm() {
 
   const methods = useForm({
     defaultValues: {
-      distro: "ubuntu",
+      distro: null,
       hostname: "",
       timezone: "",
       initialSystemUpdate: true,
