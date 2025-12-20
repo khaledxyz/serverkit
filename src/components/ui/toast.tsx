@@ -60,7 +60,7 @@ function ToastList({ position = "bottom-right" }: { position: ToastPosition }) {
           // Horizontal positioning
           "data-[position*=left]:left-(--toast-inset)",
           "data-[position*=right]:right-(--toast-inset)",
-          "data-[position*=center]:-translate-x-1/2 data-[position*=center]:left-1/2"
+          "data-[position*=center]:left-1/2 data-[position*=center]:-translate-x-1/2"
         )}
         data-position={position}
         data-slot="toast-viewport"
@@ -128,14 +128,14 @@ function ToastList({ position = "bottom-right" }: { position: ToastPosition }) {
             >
               <Toast.Content className="flex items-center justify-between gap-1.5 overflow-hidden text-sm transition-opacity duration-250 data-behind:pointer-events-none data-expanded:pointer-events-auto data-behind:opacity-0 data-expanded:opacity-100">
                 <div className="flex gap-2">
-                  {Icon && (
+                  {Icon ? (
                     <div
                       className="mt-.5 [&>svg]:h-[1lh] [&>svg]:w-4 [&_svg]:pointer-events-none [&_svg]:shrink-0"
                       data-slot="toast-icon"
                     >
                       <Icon className="in-data-[type=loading]:animate-spin in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=success]:text-success in-data-[type=warning]:text-warning in-data-[type=loading]:opacity-72" />
                     </div>
-                  )}
+                  ) : null}
 
                   <div className="flex flex-col gap-0.5">
                     <Toast.Title
@@ -148,14 +148,14 @@ function ToastList({ position = "bottom-right" }: { position: ToastPosition }) {
                     />
                   </div>
                 </div>
-                {toast.actionProps && (
+                {toast.actionProps ? (
                   <Toast.Action
                     className={buttonVariants({ size: "xs" })}
                     data-slot="toast-action"
                   >
                     {toast.actionProps.children}
                   </Toast.Action>
-                )}
+                ) : null}
               </Toast.Content>
             </Toast.Root>
           );
